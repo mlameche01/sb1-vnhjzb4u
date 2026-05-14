@@ -20,7 +20,8 @@ export default function SearchPage({ query, onNavigate, onSearch }: SearchPagePr
     if (!q.trim()) return;
     if (!pageToken) setLoading(true);
     try {
-      const result = await searchVideos(q, pageToken);
+      const educationalQuery = `${q} education français apprentissage`;
+      const result = await searchVideos(educationalQuery, pageToken);
       setVideos((prev) => pageToken ? [...prev, ...result.videos] : result.videos);
       setNextPageToken(result.nextPageToken);
     } finally {
@@ -59,7 +60,7 @@ export default function SearchPage({ query, onNavigate, onSearch }: SearchPagePr
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Search YouTube..."
+            placeholder="Recherche éducative française..."
             className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-500 pl-12 pr-4 py-3.5 rounded-xl focus:outline-none focus:border-red-500/50 focus:bg-white/8 transition-all duration-200"
           />
           <button
@@ -87,7 +88,7 @@ export default function SearchPage({ query, onNavigate, onSearch }: SearchPagePr
       {!loading && !query && (
         <div className="text-center py-20 text-gray-500">
           <Search className="w-12 h-12 mx-auto mb-4 opacity-30" />
-          <p>Search for any topic on YouTube</p>
+          <p>Recherche optimisée pour le contenu éducatif français</p>
         </div>
       )}
 

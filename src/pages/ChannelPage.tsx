@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
-import { Loader2, Users, Video, Calendar, ChevronDown } from "lucide-react";
+import { Loader2, Users, Video, Calendar, ChevronDown, Heart } from "lucide-react";
 import { fetchChannel, fetchChannelVideos, YouTubeChannel, NormalizedVideo, formatViews, formatDate } from "../lib/youtube";
 import VideoCard from "../components/VideoCard";
+import { toggleChannel } from "./FavoriteChannelsPage";
 
 interface ChannelPageProps {
   channelId: string;
@@ -75,6 +76,7 @@ export default function ChannelPage({ channelId, onNavigate }: ChannelPageProps)
             )}
           </div>
           <div className="flex-1">
+            <button onClick={() => toggleChannel({ id: channel.id, title: channel.snippet.title })} className="mb-3 bg-red-600 px-4 py-2 rounded-xl text-sm text-white flex items-center gap-2"><Heart className="w-4 h-4" />Ajouter aux favoris</button>
             <h1 className="text-2xl font-bold text-white">{channel.snippet.title}</h1>
             {channel.snippet.customUrl && (
               <p className="text-gray-500 text-sm">{channel.snippet.customUrl}</p>

@@ -17,6 +17,7 @@ import {
   formatDate,
 } from "../lib/youtube";
 import VideoCard from "../components/VideoCard";
+import WalletBar from "../components/WalletBar";
 import { toggleFavorite, isFavorite } from "./FavoritesPage";
 
 declare global {
@@ -145,6 +146,7 @@ export default function VideoPage({ videoId, onNavigate }: VideoPageProps) {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         {/* Main content */}
         <div className="xl:col-span-2">
+          <WalletBar />
           {/* Player */}
           <div className="relative aspect-video bg-black rounded-2xl overflow-hidden mb-5 shadow-2xl">
             <div ref={playerContainerRef} className="w-full h-full" />
@@ -186,6 +188,12 @@ export default function VideoPage({ videoId, onNavigate }: VideoPageProps) {
                 Share
               </button>
             </div>
+          </div>
+
+          <div className="bg-purple-600/10 border border-purple-500/20 rounded-2xl p-4 mb-5">
+            <p className="text-white font-semibold mb-2">Tip créateur avec FRN</p>
+            <p className="text-sm text-gray-300 mb-3">Token FRN Polygon: 0xbff1721bc1009E842eD701cD7AA72ecfbCBB29DA</p>
+            <a href="https://polygonscan.com/token/0xbff1721bc1009E842eD701cD7AA72ecfbCBB29DA" target="_blank" className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl text-sm inline-block">Envoyer un tip</a>
           </div>
 
           {/* Stats */}
