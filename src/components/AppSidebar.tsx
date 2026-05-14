@@ -1,4 +1,4 @@
-import { Home, Search, Heart, TrendingUp, Youtube, Menu, X } from "lucide-react";
+import { Search, Heart, Youtube, Menu, X, Radio } from "lucide-react";
 import { useState } from "react";
 import NavLink from "./NavLink";
 
@@ -10,10 +10,9 @@ export default function AppSidebar({ currentPath }: AppSidebarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems = [
-    { href: "/", label: "Home", icon: <Home className="w-5 h-5" /> },
-    { href: "/trending", label: "Trending", icon: <TrendingUp className="w-5 h-5" /> },
-    { href: "/search", label: "Search", icon: <Search className="w-5 h-5" /> },
-    { href: "/favorites", label: "Favorites", icon: <Heart className="w-5 h-5" /> },
+    { href: "/search", label: "Recherche FR", icon: <Search className="w-5 h-5" /> },
+    { href: "/favorites", label: "Favoris vidéos", icon: <Heart className="w-5 h-5" /> },
+    { href: "/channels", label: "Chaînes favorites", icon: <Radio className="w-5 h-5" /> },
   ];
 
   const SidebarContent = () => (
