@@ -5,13 +5,15 @@ import VideoPage from "./pages/VideoPage";
 import SearchPage from "./pages/SearchPage";
 import ChannelPage from "./pages/ChannelPage";
 import FavoritesPage from "./pages/FavoritesPage";
+import FavoriteChannelsPage from "./pages/FavoriteChannelsPage";
 
 function parsePath(pathname: string, search: string) {
-  if (pathname === "/" || pathname === "" || pathname === "/trending") return { route: "home", param: "" };
+  if (pathname === "/" || pathname === "") return { route: "search", param: "education france" };
   if (pathname === "/search") return { route: "search", param: new URLSearchParams(search).get("q") || "" };
   if (pathname.startsWith("/video/")) return { route: "video", param: pathname.replace("/video/", "") };
   if (pathname.startsWith("/channel/")) return { route: "channel", param: pathname.replace("/channel/", "") };
   if (pathname === "/favorites") return { route: "favorites", param: "" };
+  if (pathname === "/channels") return { route: "channels", param: "" };
   return { route: "home", param: "" };
 }
 
@@ -56,8 +58,10 @@ export default function App() {
         return <ChannelPage channelId={param} onNavigate={navigate} />;
       case "favorites":
         return <FavoritesPage onNavigate={navigate} />;
+      case "channels":
+        return <FavoriteChannelsPage onNavigate={navigate} />;
       default:
-        return <Index onNavigate={navigate} />;
+        return <SearchPage query="education france" onNavigate={navigate} onSearch={handleSearch} />;
     }
   };
 
